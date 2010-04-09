@@ -1,0 +1,79 @@
+<html>
+<head>
+		<script type="text/javascript">
+			not_started = true;
+ 			document.addEventListener("DOMContentLoaded", 
+ 				function(){
+ 					if(not_started){
+ 						not_started = false;
+ 						startup();
+ 					}
+			 	}, false);
+		
+		function startup(){
+			var mumbai = document.getElementById("ajaxcdpost");
+				mumbai.addEventListener("click", function(){
+					postit("http://mumbai.latest.sopdemo.appspot.com/demo");
+				}, false);
+			var bangalore = document.getElementById("ajaxselfpost");
+				bangalore.addEventListener("click", function(){
+					postit("/demo");
+				}, false);
+			var scriptbtn = document.getElementById("jsonp");
+			scriptbtn.addEventListener("click", insertScript, false);
+		};
+
+		function postit(where){
+			var panel = document.getElementById("panel");
+			try{
+			    alert("document domain is "+ document.domain);
+					var req = new XMLHttpRequest();
+					req.open('POST', where, false); 
+					req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					req.send("msg="+document.getElementById("msgbox").value);
+					if(req.status == 200){
+						newline(panel);
+						panel.appendChild(document.createTextNode(req.responseText));
+					}
+					else{
+						panel.appendChild(document.createTextNode(req.statusText)); 
+					}
+			  }catch(ex){
+			      alert(ex);
+			      console.log(ex);
+			  }										
+		}
+		
+		function newline(e){
+			e.appendChild(document.createElement('br'));
+		}
+		
+		function mumbaiCallback(response){
+			var panel = document.getElementById("jsonpanel");
+			newline(panel);
+			panel.appendChild(document.createTextNode(response));
+		}
+		function insertScript(){
+			var scriptarea = document.createElement('script');
+			scriptarea.type="text/javascript";
+			scriptarea.src= "http:///mumbai.latest.sopdemo.appspot.com/script?msg="+document.getElementById("msgbox").value;
+			var headElem = document.getElementsByTagName("head")[0];         
+			
+			headElem.appendChild(scriptarea);
+		}
+		</script>
+</head>
+<body>
+<form method="POST" action="http://mumbai.latest.sopdemo.appspot.com/demo">
+	<input type="text" name="msg" value="type something" id="msgbox"></input>
+	<input type="submit" value="post to mumbai">
+</form>
+<p>and the ajax post</p>
+<button id="ajaxcdpost">ajax post to mumbai</button>
+<button id="ajaxselfpost">ajax post to self</button>
+<p id="panel">result?</p>
+<p>and inserting a script</p>
+<button id="jsonp">insert mumbai script</button>
+<p id="jsonpanel">result?</p>
+</body>
+</html>

@@ -1,0 +1,11 @@
+application: sopdemo
+version: bangalore
+runtime: python
+api_version: 1
+
+handlers:
+- url: /demo
+  script: bangalore.py
+
+- url: /s
+  static_dir: s

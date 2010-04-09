@@ -1,0 +1,10 @@
+application: sopdemo
+version: mumbai
+runtime: python
+api_version: 1
+
+handlers:
+- url: /demo
+  script: mumbai.py
+- url: /script
+  script: mumbai.py
