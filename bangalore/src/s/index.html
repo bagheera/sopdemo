@@ -11,11 +11,11 @@
 			 	}, false);
 		
 		function startup(){
-			var mumbai = document.getElementById("ajaxcdpost");
+			var mumbai = document.getElementById("xhrcdpost");
 				mumbai.addEventListener("click", function(){
 					postit("http://mumbai.latest.sopdemo.appspot.com/demo");
 				}, false);
-			var bangalore = document.getElementById("ajaxselfpost");
+			var bangalore = document.getElementById("xhrselfpost");
 				bangalore.addEventListener("click", function(){
 					postit("/demo");
 				}, false);
@@ -68,9 +68,9 @@
 	<input type="text" name="msg" value="type something" id="msgbox"></input>
 	<input type="submit" value="post to mumbai">
 </form>
-<p>and the ajax post</p>
-<button id="ajaxcdpost">ajax post to mumbai</button>
-<button id="ajaxselfpost">ajax post to self</button>
+<p>and the xhr post</p>
+<button id="xhrcdpost">xhr post to mumbai</button>
+<button id="xhrselfpost">xhr post to self</button>
 <p id="panel">result?</p>
 <p>and inserting a script</p>
 <button id="jsonp">insert mumbai script</button>

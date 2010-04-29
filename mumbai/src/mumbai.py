@@ -11,12 +11,18 @@ class MainPage(webapp.RequestHandler):
         
     def post(self):
         msg = self.request.get('msg')
-        origin = self.request.headers.get('Referer', "anon")
+        referer = self.request.headers.get('Referer', "anon")
         self.response.headers['Content-Type'] = 'text/plain'
-        result = 'Mumbai got a msg '+ msg + ' from ' + origin
+        result = 'Mumbai got a msg '+ msg + ' from ' + referer
         logging.info(result)
         self.response.out.write(result)
-
+    
+    def options(self):
+        origin = self.request.headers.get('Origin', None)
+        logging.info(origin)
+        self.response.headers['Access-Control-Allow-Origin'] = "http://bangalore.latest.sopdemo.appspot.com"
+        self.response.headers['Access-Control-Allow-Methods'] = "POST, GET, OPTIONS"
+        
 class HandleScript(webapp.RequestHandler):    
     
     def get(self):
