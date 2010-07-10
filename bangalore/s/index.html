@@ -12,13 +12,17 @@
 		
 		function startup(){
 			var mumbai = document.getElementById("xhrcdpost");
-				mumbai.addEventListener("click", function(){
-					postit("http://mumbai.latest.sopdemo.appspot.com/demo");
-				}, false);
+			mumbai.addEventListener("click", function(){
+				postit("http://mumbai.latest.sopdemo.appspot.com/demo");
+			}, false);
 			var bangalore = document.getElementById("xhrselfpost");
-				bangalore.addEventListener("click", function(){
-					postit("/demo");
-				}, false);
+			bangalore.addEventListener("click", function(){
+				postit("/demo");
+			}, false);
+			var chennai = document.getElementById("xhr_cors_post");
+			chennai.addEventListener("click", function(){
+				postit("http://chennai.latest.sopdemo.appspot.com/demo");
+			}, false);
 			var scriptbtn = document.getElementById("jsonp");
 			scriptbtn.addEventListener("click", insertScript, false);
 		};
@@ -26,7 +30,7 @@
 		function postit(where){
 			var panel = document.getElementById("panel");
 			try{
-			    alert("document domain is "+ document.domain);
+			    console.log("document domain is "+ document.domain);
 					var req = new XMLHttpRequest();
 					req.open('POST', where, false); 
 					req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -56,7 +60,8 @@
 		function insertScript(){
 			var scriptarea = document.createElement('script');
 			scriptarea.type="text/javascript";
-			scriptarea.src= "http:///mumbai.latest.sopdemo.appspot.com/script?msg="+document.getElementById("msgbox").value;
+			scriptarea.src= "http:///mumbai.latest.sopdemo.appspot.com/script?callBack=mumbaiCallback&msg="
+				+document.getElementById("msgbox").value;
 			var headElem = document.getElementsByTagName("head")[0];         
 			
 			headElem.appendChild(scriptarea);
@@ -71,6 +76,7 @@
 <p>and the xhr post</p>
 <button id="xhrcdpost">xhr post to mumbai</button>
 <button id="xhrselfpost">xhr post to self</button>
+<button id="xhr_cors_post">xhr CORS post to chennai</button>
 <p id="panel">result?</p>
 <p>and inserting a script</p>
 <button id="jsonp">insert mumbai script</button>
