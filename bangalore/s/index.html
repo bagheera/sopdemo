@@ -69,17 +69,20 @@
 		</script>
 </head>
 <body>
+<p>
+A basic demo of same origin policy, jsonp and the new CORS (cross origin resource sharing). Tested with Firefox 3.5+ with firebug installed or the latest chrome. See <a href="same_origin_policy_cross_origin_resource_sharing_demo.html">notes</a></p>
+
 <form method="POST" action="http://mumbai.latest.sopdemo.appspot.com/demo">
 	<input type="text" name="msg" value="type something" id="msgbox"></input>
-	<input type="submit" value="post to mumbai">
+	<input type="submit" value="submit form to mumbai (succeeds)">
 </form>
 <p>and the xhr post</p>
-<button id="xhrcdpost">xhr post to mumbai</button>
-<button id="xhrselfpost">xhr post to self</button>
-<button id="xhr_cors_post">xhr CORS post to chennai</button>
+<button id="xhrcdpost">xhr post to mumbai (fails)</button>
+<button id="xhrselfpost">xhr post to self (succeeds)</button>
+<button id="xhr_cors_post">xhr CORS post to chennai (succeeds)</button>
 <p id="panel">result?</p>
 <p>and inserting a script</p>
-<button id="jsonp">insert mumbai script</button>
+<button id="jsonp">insert mumbai script i.e. jsonp (succeeds)</button>
 <p id="jsonpanel">result?</p>
 </body>
 </html>

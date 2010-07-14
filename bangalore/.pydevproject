@@ -7,7 +7,7 @@
 <value>C:\pgms\dev_tools\google_app_engine</value>
 </pydev_variables_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/sopdemo-bangalore/src</path>
+<path>/sopdemo-bangalore</path>
 </pydev_pathproperty>
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
 <path>${GOOGLE_APP_ENGINE}</path>
